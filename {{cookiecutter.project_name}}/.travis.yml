@@ -3,23 +3,12 @@ branches:
   only:
   - master
 
-- os: linux
-  dist: trusty
-  language: python
-  python: 3.6
-  services:
-    - docker
-  addons:
-    apt:
-      packages:
-      - python-pip
-  before_script:
-    - docker run -it -d --name ${TARGET} ${IMAGE_NAME} /bin/bash
-  after_script:
-    - docker rm -f container
-  env:
-    - TARGET=container
-    - IMAGE_NAME=fgtatsuro/infra-bridgehead:alpine-3.3
+os: linux
+dist: trusty
+language: python
+python: 3.6
+services:
+  - docker
 
 sudo: required
 
@@ -30,3 +19,4 @@ script:
   - make run
   - docker exec -it {{cookiecutter.project_name|lower|replace('-', '_')}}_container pip install -e .
   - docker exec -it {{cookiecutter.project_name|lower|replace('-', '_')}}_container python -c "import {{cookiecutter.project_name|lower|replace('-', '_')}}"
+  - make clean

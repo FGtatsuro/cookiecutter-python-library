@@ -3,14 +3,12 @@ branches:
   only:
   - master
 
-- os: linux
-  dist: trusty
-  language: python
-  python: 3.6
-  addons:
-    apt:
-      packages:
-      - python-pip
+os: linux
+dist: trusty
+language: python
+python: 3.6
+services:
+  - docker
 
 sudo: required
 
@@ -23,3 +21,4 @@ script:
   - make run
   - docker exec -it test_project_container pip install -e .
   - docker exec -it test_project_container python -c "import test_project"
+  - make clean
