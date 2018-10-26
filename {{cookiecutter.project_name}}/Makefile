@@ -29,9 +29,9 @@ clean:
 # If you want to fail this target(ex. CI), you must create a wrapper script like:
 # 	make lint 2>&1 | grep Error; if [ $? -eq 0 ]; then exit 1; fi
 lint:
-	-flake8 tests
-	-pydocstyle tests
-	-mypy -p tests
+	-flake8 .
+	-pydocstyle .
+	-mypy -p {{cookiecutter.project_name|lower|replace('-', '_')}}
 	-isort --diff --recursive .
 
 format:
