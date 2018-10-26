@@ -1,0 +1,21 @@
+**/__pycache__/
+**/*.pyc
+.mypy_cache/
+.venv*
+*.egg-info
+dist
+
+.dockerignore
+.git
+.gitignore
+.github
+**/.gitkeep
+
+.build
+
+Dockerfile
+LICENSE
+Makefile
+
+# For tag creation
+tags
