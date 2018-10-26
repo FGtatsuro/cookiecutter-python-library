@@ -32,9 +32,11 @@ lint:
 	-flake8 tests
 	-pydocstyle tests
 	-mypy -p tests
+	-isort --diff --recursive .
 
 format:
 	autopep8 --in-place --aggressive --recursive .
+	isort --recursive .
 
 tags: Dockerfile requirements.txt setup.cfg setup.py $(SRC)
 	ctags -R --exclude=.mypy_cache
